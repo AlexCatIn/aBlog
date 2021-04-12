@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Create a new post{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+  <h1>Add Post</h1>
+  <br/><br/>
+  <div class="form-contol">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.media }}
+      {{ form.as_p }}
+      <button class="btn btn-secondary">Post</button>
+  </div>
+  <script>
+    var name = "{{ user.id }}";
+    document.getElementById("koshin").value = name;
+  </script>
+{% else %}
+
+YOU...SHALL NOT... PASS!!! (c) Gendalf the Grey
+
+{% endif %}
+
+{% endblock %}
